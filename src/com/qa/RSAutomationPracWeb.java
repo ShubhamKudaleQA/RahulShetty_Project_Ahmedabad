@@ -1,7 +1,6 @@
 package com.qa;
 
 import java.time.Duration;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -137,8 +136,8 @@ public class RSAutomationPracWeb {
 				System.out.println("Child Win Title is: " + driver.getTitle());
 				System.out.println("Child Win URL is: " + driver.getCurrentUrl());
 				wait.until(
-						ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1[class='_title_sop4k_21']")));
-				System.out.println(driver.findElement(By.cssSelector("h1[class='_title_sop4k_21']")).getText());
+						ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
+				System.out.println(driver.findElement(By.tagName("h1")).getText());
 			}
 			driver.switchTo().window(parentWin);
 		}
@@ -163,8 +162,8 @@ public class RSAutomationPracWeb {
 				driver.switchTo().window(tab);
 				System.out.println("Child Tab Title is: " + driver.getTitle());
 				wait.until(
-						ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1[class='_title_sop4k_21']")));
-				System.out.println(driver.findElement(By.cssSelector("h1[class='_title_sop4k_21']")).getText());
+						ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
+				System.out.println(driver.findElement(By.tagName("h1")).getText());
 			}
 
 			driver.switchTo().window(parentTab);
@@ -351,8 +350,8 @@ public class RSAutomationPracWeb {
 		rs.checkBox(driver);
 		rs.dropDown(driver);
 		rs.autoSuggestion(driver);
-//		rs.switchWindow(driver, wait);	
-//		rs.switchTab(driver, wait);
+		rs.switchWindow(driver, wait);	
+		rs.switchTab(driver, wait);
 		String name = rs.fixedHeaderWebTable(driver);
 		rs.switchToAlert(driver, name);
 		rs.elementDisplay(driver, str, act);
