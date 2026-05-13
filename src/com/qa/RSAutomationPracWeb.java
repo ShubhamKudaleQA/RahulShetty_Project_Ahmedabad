@@ -20,7 +20,7 @@ public class RSAutomationPracWeb {
 	public void radioButton(WebDriver driver) {
 
 		System.out.println(driver.findElement(By.cssSelector("div#radio-btn-example fieldset legend")).getText());
-		System.out.println("-------------------");
+		System.out.println("--------------------");
 
 		List<WebElement> allRadioBtn = driver.findElements(By.cssSelector("input[class='radioButton']"));
 
@@ -135,8 +135,7 @@ public class RSAutomationPracWeb {
 				driver.switchTo().window(win);
 				System.out.println("Child Win Title is: " + driver.getTitle());
 				System.out.println("Child Win URL is: " + driver.getCurrentUrl());
-				wait.until(
-						ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
 				System.out.println(driver.findElement(By.tagName("h1")).getText());
 			}
 			driver.switchTo().window(parentWin);
@@ -161,8 +160,7 @@ public class RSAutomationPracWeb {
 
 				driver.switchTo().window(tab);
 				System.out.println("Child Tab Title is: " + driver.getTitle());
-				wait.until(
-						ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
 				System.out.println(driver.findElement(By.tagName("h1")).getText());
 			}
 
@@ -282,7 +280,7 @@ public class RSAutomationPracWeb {
 		System.out.println();
 	}
 
-	public void iframe(WebDriver driver, Actions act, WebDriverWait wait) throws Exception {
+	public void iframe(WebDriver driver, Actions act, WebDriverWait wait) {
 		WebElement iframe = driver.findElement(By.id("courses-iframe"));
 		System.out.println(driver.findElement(RelativeLocator.with(By.tagName("legend")).above(iframe)).getText());
 		System.out.println("-------------------");
@@ -331,7 +329,7 @@ public class RSAutomationPracWeb {
 		System.out.println();
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 
 		WebDriver driver = new ChromeDriver();
 
@@ -340,9 +338,8 @@ public class RSAutomationPracWeb {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		Actions act = new Actions(driver);
 		driver.manage().deleteAllCookies();
-
 		driver.get("https://rahulshettyacademy.com/AutomationPractice/");
-
+		
 		RSAutomationPracWeb rs = new RSAutomationPracWeb();
 
 		String str = rs.webTable(driver);
@@ -350,7 +347,7 @@ public class RSAutomationPracWeb {
 		rs.checkBox(driver);
 		rs.dropDown(driver);
 		rs.autoSuggestion(driver);
-		rs.switchWindow(driver, wait);	
+		rs.switchWindow(driver, wait);
 		rs.switchTab(driver, wait);
 		String name = rs.fixedHeaderWebTable(driver);
 		rs.switchToAlert(driver, name);
